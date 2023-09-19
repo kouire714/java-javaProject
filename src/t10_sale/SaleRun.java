@@ -9,7 +9,7 @@ public class SaleRun {
 		boolean run = true;
 		
 		while(run) {
-			System.out.println("\n\t*** 작업선택 ***");
+			System.out.println("\n\t*** 작업선택(메뉴선택) ***");
 			System.out.println("========================================");
 			System.out.print("1:상품관리   2:판매관리   3:종료 ==> ");
 			int no = scanner.nextInt();

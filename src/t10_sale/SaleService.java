@@ -50,7 +50,7 @@ public class SaleService {
 	private void saleList() {
 		ArrayList<SaleVO> vos = dao.getSaleList();
 		
-		System.out.println("\n*** 판매상품 리스트(전체) ***");
+		System.out.println("\n*** 판매상품 리스트(전체)연습용 ***");
 		System.out.println("=====================================");
 		System.out.println("번호\t상품명\t판매수량\t판매가격\t판매일자");
 		System.out.println("-------------------------------------");
