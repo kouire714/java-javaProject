@@ -138,8 +138,50 @@ public class InsaDAO {
 	public Vector getInsaList() {
 		Vector vData = new Vector<>();
 		try {
-			//sql = "select * from insa order by idx desc";
-			sql = "select * from insa order by age";
+			sql = "select * from insa order by idx desc";
+			//sql = "select * from insa order by age";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+//				vo = new InsaVO();
+//				vo.setIdx(rs.getInt("idx"));
+//				vo.setName(rs.getString("name"));
+//				vo.setAge(rs.getInt("age"));
+//				vo.setGender(rs.getString("gender"));
+//				vo.setIpsail(rs.getString("ipsail"));
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+			// e.printStackTrace();
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
+
+	// 조건별 정렬처리하기
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Vector getNameAscList(String str, String flag) {
+		Vector vData = new Vector<>();
+		try {
+			if(str.equals("name")) {
+				if(flag.equals("a")) sql = "select * from insa order by name";
+				else sql = "select * from insa order by name desc";
+			}
+		  else if(str.equals("ipsail")) {
+		  	if(flag.equals("a")) sql = "select * from insa order by ipsail";
+				else sql = "select * from insa order by ipsail desc";
+		  }
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -161,5 +203,150 @@ public class InsaDAO {
 		}
 		return vData;
 	}
+
+
+	/*
+	// 남자라디오버튼 선택시 남자 데이터만 가져오기
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Vector getGenderMale() {
+		Vector vData = new Vector<>();
+		try {
+			sql = "select * from insa where gender='남자' order by name";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
 	
+	// 여자라디오버튼 선택시 여자 데이터만 가져오기
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Vector getGenderFemale() {
+		Vector vData = new Vector<>();
+		try {
+			sql = "select * from insa where gender='여자' order by name";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
+	*/
+	
+	// 남자 또는 여자 라디오버튼을 클릭하면 해당 자료만 검색처리하기
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Vector getGender(String gender) {
+		Vector vData = new Vector<>();
+		try {
+			sql = "select * from insa where gender=? order by name";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gender);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
+
+
+	/*
+	// 성명 조건 검색(포함된 글자는 모두다 검색할수 있도록 처리)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Vector getConditionNameSearch(String txtCondi) {
+		Vector vData = new Vector<>();
+		try {
+			sql = "select * from insa where name like ? order by name";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+txtCondi+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
+	*/
+	
+	// 다양한 조건을 선택후 검색 문자열을 입력하고, '조건검색'버튼을 누를경우 수행처리...
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Vector getConditionSearch(String fieldName, String txtCondi) {
+		Vector vData = new Vector<>();
+		try {
+			sql = "select * from insa where "+fieldName+" like ? order by name";
+			pstmt = conn.prepareStatement(sql);
+			
+			if(fieldName.equals("age")) pstmt.setInt(1, Integer.parseInt(txtCondi));
+			else pstmt.setString(1, "%"+txtCondi+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Vector vo = new Vector<>();
+				vo.add(rs.getInt("idx"));
+				vo.add(rs.getString("name"));
+				vo.add(rs.getInt("age"));
+				vo.add(rs.getString("gender"));
+				vo.add(rs.getString("ipsail"));
+				
+				vData.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vData;
+	}
 }
