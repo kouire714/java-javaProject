@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class HoiwonRun {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		
 		HoiwonDAO dao = new HoiwonDAO();
 		boolean run = true;
 		String name = "";

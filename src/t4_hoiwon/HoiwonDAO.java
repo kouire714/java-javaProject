@@ -21,7 +21,7 @@ public class HoiwonDAO {
 			
 			//String url = "jdbc:mysql://localhost:3306/javaProject";
 			//String url = "jdbc:mysql://127.0.0.1:3306/javaProject";
-			String url = "jdbc:mysql://192.168.50.20:3306/javaProject";
+			String url = "jdbc:mysql://192.168.50.55:3306/javaProject";
 			String user = "atom";
 			String password = "1234";
 			conn = DriverManager.getConnection(url, user, password);

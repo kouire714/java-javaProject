@@ -38,19 +38,19 @@ public HoiwonDAO() {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			rs.next();
-			System.out.print("번호 : " + rs.getString("idx"));
-			System.out.print("성명 : " + rs.getString("name"));
-			System.out.print("나이 : " + rs.getString("age"));
-			System.out.print("주소 : " + rs.getString("address"));
-			System.out.print("성별 : " + rs.getString("gender"));
+			System.out.println("번호 : " + rs.getString("idx"));
+			System.out.println("성명 : " + rs.getString("name"));
+			System.out.println("나이 : " + rs.getString("age"));
+			System.out.println("주소 : " + rs.getString("address"));
+			System.out.println("성별 : " + rs.getString("gender"));
 			System.out.println();
 			
 			rs.next();
-			System.out.print("번호 : " + rs.getString("idx"));
-			System.out.print("성명 : " + rs.getString("name"));
-			System.out.print("나이 : " + rs.getString("age"));
-			System.out.print("주소 : " + rs.getString("address"));
-			System.out.print("성별 : " + rs.getString("gender"));
+			System.out.println("번호 : " + rs.getString("idx"));
+			System.out.println("성명 : " + rs.getString("name"));
+			System.out.println("나이 : " + rs.getString("age"));
+			System.out.println("주소 : " + rs.getString("address"));
+			System.out.println("성별 : " + rs.getString("gender"));
 			
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 :" + e.getMessage());
