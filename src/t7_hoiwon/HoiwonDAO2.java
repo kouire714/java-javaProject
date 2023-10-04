@@ -23,7 +23,7 @@ public class HoiwonDAO2 {
 			String url = "jdbc:mysql://localhost:3306/javaProject";
 			//String url = "jdbc:mysql://127.0.0.1:3306/javaProject";
 			//String url = "jdbc:mysql://192.168.50.20:3306/javaProject";
-			String user = "atom";
+			String user = "root";
 			String password = "1234";
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {

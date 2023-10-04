@@ -13,7 +13,7 @@ public HoiwonDAO() {
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		String url = "jdbc:mysql://localhost:3306/javaProject";
-		String user = "atom";
+		String user = "root";
 		String password = "1234";
 		conn = DriverManager.getConnection(url, user, password);
 	} catch (ClassNotFoundException e) {
