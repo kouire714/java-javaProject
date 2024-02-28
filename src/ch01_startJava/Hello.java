@@ -1,4 +1,4 @@
-package j0817_newProject;
+package ch01_startJava;
 
 public class Hello {
 	public static void main(String[] args) {
