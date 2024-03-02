@@ -1,18 +1,21 @@
 package ch02_variable_type;
 
-public class Test1 {
+public class Declaration1 {
 	
 	public static void main(String[] args) {
+		
 		int iA;
 		iA = 100;
 		System.out.println("iA = " + iA + "\n");
 		
 		String sA = "Seoul";
 		System.out.println("sA = " + sA);
+		
 		System.out.println();
 		
 		double dA = 3.14;
 		System.out.println("dA = " + dA);
+		
 		System.out.println();
 		
 		System.out.println("iA=" + iA + " , sA=" + sA + " , dA=" + dA);
@@ -43,6 +46,7 @@ public class Test1 {
 		// int if = 100;			// 예약어는 변수명으로 사용할 수 없다.
 		
 		int su5 = 200;
+		
 		int res = seoulSu4;
 		System.out.println("res : " + res);
 		
