@@ -1,6 +1,5 @@
 package ch05_reference_type;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Test {
@@ -18,7 +17,7 @@ public class Test {
 		
 //		3.
 		System.out.println("3---------------------------------");
-//		3번
+//		2번
 //		문자열 비교는 .equals()메소드를 사용해 비교할 수 있다.
 		
 //		4.
