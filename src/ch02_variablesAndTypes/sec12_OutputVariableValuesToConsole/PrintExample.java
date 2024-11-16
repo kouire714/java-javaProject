@@ -1,4 +1,4 @@
-package ch02_variablesAndTypes.sec12_printVariableValuesToConsole;
+package ch02_variablesAndTypes.sec12_OutputVariableValuesToConsole;
 
 public class PrintExample {
 	public static void main(String[] args) {

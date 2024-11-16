@@ -1,4 +1,4 @@
-package ch02_variablesAndTypes.sec09_automaticTypeConversionInCalculationExpressions;
+package ch02_variablesAndTypes.sec09_automaticTypeConversionInOperationExpressions;
 
 public class OperationPromotionExample {
 

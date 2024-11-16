@@ -1,4 +1,4 @@
-package ch02_variablesAndTypes.sec01_variableDeclaration;
+package ch02_variablesAndTypes.sec01_declaringVariables;
 
 public class VariableInitializationExample {
 	public static void main(String[] args) {

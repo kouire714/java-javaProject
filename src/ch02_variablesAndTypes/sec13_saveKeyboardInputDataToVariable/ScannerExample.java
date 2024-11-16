@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ScannerExample {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		Scanner scanner = new Scanner(System.in);
 		

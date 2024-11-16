@@ -1,4 +1,4 @@
-package ch02_variablesAndTypes.sec10_convertStringToBasicType;
+package ch02_variablesAndTypes.sec10_convertStringToPrimitiveType;
 
 public class PrimitiveAndStringConversionExample {
 
